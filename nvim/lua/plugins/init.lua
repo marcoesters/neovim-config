@@ -3,7 +3,9 @@ return {
     "tpope/vim-commentary",
     {
         "nvim-tree/nvim-web-devicons",
-        lazy = true
+        config = function()
+            require("nvim-web-devicons").setup()
+        end,
     },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -20,8 +22,8 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            { "williamboman/mason.nvim", lazy = true },
-            { "williamboman/mason-lspconfig.nvim", lazy = true },
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
         },
         config = function()
             require("configs.nvim-lspconfig")
@@ -45,5 +47,22 @@ return {
         end,
         ft = { "markdown" },
         lazy = true,
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup({
+                signcolumn = false,  -- turn off by default
+            })
+        end,
+    },
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function ()
+            require("configs.lualine")
+        end,
     },
 }
