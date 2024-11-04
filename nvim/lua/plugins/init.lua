@@ -1,6 +1,7 @@
 return {
     "machakann/vim-sandwich",
     "tpope/vim-commentary",
+    "voldikss/vim-floaterm",
     {
         "nvim-tree/nvim-web-devicons",
         config = function()
