@@ -1,3 +1,17 @@
+local filename_section = {
+    'filename',
+    file_status = true,
+    newfile_status = true,
+    path = 1,
+    shorting_target = 25,
+    symvols = {
+        modified = '[+]',
+        readonly = '[-]',
+        unnamed = '[No Name]',
+        newfile = '[New]'
+    },
+}
+
 local config = {
     options = {
         icons_enabled = true,
@@ -21,7 +35,7 @@ local config = {
     sections = {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {'%f'},
+        lualine_c = {filename_section},
         lualine_x = {'filetype'},
         lualine_y = {'progress'},
         lualine_z = {'location'}
@@ -29,7 +43,7 @@ local config = {
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = {'%f'},
+        lualine_c = {filename_section},
         lualine_x = {'location'},
         lualine_y = {},
         lualine_z = {}
