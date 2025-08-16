@@ -11,6 +11,10 @@ return {
 
         telescope.setup({
             defaults = {
+                layout_config = {
+                    mirror = true,
+                },
+                layout_strategy = "vertical",
                 path_display = { "truncate "},
                 mappings = {
                     i = {
