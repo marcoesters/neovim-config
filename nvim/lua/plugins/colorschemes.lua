@@ -18,19 +18,4 @@ return {
       end,
     },
   },
-  {
-    "sho-87/kanagawa-paper.nvim",
-    priority = 1000,
-    opts = {
-      overrides = function(_, opts)
-        return {
-          ["@variable.builtin"] = { italic = false },
-        }
-      end,
-    },
-  },
-  {
-    "folke/tokyonight.nvim",
-    priority = 1000,
-  },
 }
