@@ -21,9 +21,25 @@ return {
                         ["<C-k>"] = actions.move_selection_previous,
                         ["<C-j>"] = actions.move_selection_next,
                         ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+                        ["<C-x>"] = actions.select_horizontal,
+                        ["<C-v>"] = actions.select_vertical,
+                        ["<C-t>"] = actions.select_tab,
+                    },
+                    n = {
+                        ["<C-x>"] = actions.select_horizontal,
+                        ["<C-v>"] = actions.select_vertical,
+                        ["<C-t>"] = actions.select_tab,
                     },
                 },
             },
+            pickers = {
+                lsp_definitions = {
+                    jump_type = "never",
+                },
+                lsp_definitions = {
+                    jump_type = "never",
+                },
+            }
         })
 
         telescope.load_extension("fzf")
