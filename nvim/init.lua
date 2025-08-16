@@ -28,24 +28,24 @@ opt.wildmenu = true
 
 
 local indents = {
-    html = 2,
-    javascript = 2,
-    json = 2,
-    lua = 2,
-    nsis = 2,
-    python = 4,
-    rust = 4,
-    typescript = 2,
-    yaml = 2,
+  html = 2,
+  javascript = 2,
+  json = 2,
+  lua = 2,
+  nsis = 2,
+  python = 4,
+  rust = 4,
+  typescript = 2,
+  yaml = 2,
 }
 for filetype, indent in pairs(indents) do
-    vim.api.nvim_create_autocmd("FileType", {
-        pattern = filetype,
-        callback = function()
-            vim.opt_local.shiftwidth = indent
-            vim.opt_local.tabstop = indent
-        end,
-    })
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = filetype,
+    callback = function()
+      vim.opt_local.shiftwidth = indent
+      vim.opt_local.tabstop = indent
+    end,
+  })
 end
 
 opt.undofile = true
@@ -55,12 +55,12 @@ opt.backup = true
 opt.backupdir = table.concat({ vim.fn.stdpath "data", "backup", "", "" }, pathsep)
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-    callback = function()
-            vim.highlight.on_yank({
-            hlgroup = "IncSearch",
-            timeout = 500,
-        })
-    end,
+  callback = function()
+    vim.highlight.on_yank({
+      hlgroup = "IncSearch",
+      timeout = 500,
+    })
+  end,
 })
 
 opt.foldmethod = "expr"
