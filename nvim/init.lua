@@ -26,6 +26,28 @@ opt.syntax = "on"
 opt.tabstop = 4
 opt.wildmenu = true
 
+
+local indents = {
+    html = 2,
+    javascript = 2,
+    json = 2,
+    lua = 2,
+    nsis = 2,
+    python = 4,
+    rust = 4,
+    typescript = 2,
+    yaml = 2,
+}
+for filetype, indent in pairs(indents) do
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = filetype,
+        callback = function()
+            vim.opt_local.shiftwidth = indent
+            vim.opt_local.tabstop = indent
+        end,
+    })
+end
+
 opt.undofile = true
 -- Add double pathsep to the end to use full path as file names.
 -- This prevents clobbering of files with the same basename.
