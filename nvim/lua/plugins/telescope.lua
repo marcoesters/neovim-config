@@ -36,7 +36,7 @@ return {
         lsp_definitions = {
           jump_type = "never",
         },
-        lsp_definitions = {
+        lsp_references = {
           jump_type = "never",
         },
       }
