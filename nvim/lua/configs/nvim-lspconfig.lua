@@ -43,9 +43,11 @@ require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = language_servers,
   automatic_installation = true,
+  handlers = {
+    function(server_name)
+      require("lspconfig")[server_name].setup({
+        capabilities = capabilities,
+      })
+    end
+  }
 })
-
-local lspconfig = require("lspconfig")
-for _, server in ipairs(language_servers) do
-  lspconfig[server].setup({})
-end
