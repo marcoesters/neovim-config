@@ -27,6 +27,9 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
   end
 })
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+
 local language_servers = {
   "jsonls",
   "lua_ls",
@@ -39,9 +42,9 @@ require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = language_servers,
   automatic_installation = true,
-  handlers = {
-    function(server)
-      require("lspconfig")[server].setup({})
-    end
-  }
 })
+
+local lspconfig = require("lspconfig")
+for _, server in ipairs(language_servers) do
+  lspconfig[server].setup({})
+end

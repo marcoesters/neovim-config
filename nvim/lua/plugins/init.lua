@@ -40,15 +40,9 @@ return {
     end,
   },
   {
-    "wallpants/github-preview.nvim",
-    cmd = { "GithubPreviewToggle", "GithubPreviewStart", "GithubPreviewStop" },
-    opts = {},
-    config = function(_, opts)
-        local gpreview = require("github-preview")
-        gpreview.setup(opts)
-    end,
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
     ft = { "markdown" },
-    lazy = true,
   },
   {
     "lewis6991/gitsigns.nvim",
