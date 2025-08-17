@@ -1,18 +1,15 @@
-for _, diag in ipairs({ "Error", "Warn", "Info", "Hint" }) do
-  vim.fn.sign_define("DiagnosticSign" .. diag, {
-    text = "",
-    texthl = "DiagnosticSign" .. diag,
-    linehl = "",
-    numhl = "DiagnosticSign" .. diag,
-  })
+local signs = { text = {}, numhl = {} }
+for _, diag in ipairs({ "ERROR", "WARN", "INFO", "HINT" }) do
+  signs.text[vim.diagnostic.severity[diag]] = ""
+  signs.numhl[vim.diagnostic.severity[diag]] = "DiagnosticSign" .. diag:sub(1,1) .. diag:sub(2):lower()
 end
 
-vim.o.updatetime = 250
 vim.diagnostic.config({
   virtual_text = false,
+  signs = signs,
 })
+
 vim.api.nvim_create_autocmd({ "CursorHold" }, {
-  buffer = bufnr,
   group = vim.api.nvim_create_augroup(
     "float_diagnostic_cursor",
     { clear = true }
@@ -30,26 +27,12 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
   end
 })
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+local language_servers = {
+  "pyright",
+}
+
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "basedpyright" },
-  automatic_installtion = true,
+  ensure_installed = language_servers,
+  automatic_installation = true,
 })
---local lspconfig = require("lspconfig")
---lspconfig.basedpyright.setup({
---    capabilities = capabilities,
---    basedpyright = {
---        analysis = {
---            typeCheckingMode = "off",
---        },
---    },
---})
-local mason_lspconfig = require "mason-lspconfig"
-mason_lspconfig.setup {
-  ensure_installed = { "pyright" }
-}
-require("lspconfig").pyright.setup {
-  capabilities = capabilities,
-}
