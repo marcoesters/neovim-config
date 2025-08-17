@@ -40,11 +40,12 @@ return {
     end,
   },
   {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = "cd app && npm install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
+    "wallpants/github-preview.nvim",
+    cmd = { "GithubPreviewToggle", "GithubPreviewStart", "GithubPreviewStop" },
+    opts = {},
+    config = function(_, opts)
+        local gpreview = require("github-preview")
+        gpreview.setup(opts)
     end,
     ft = { "markdown" },
     lazy = true,
