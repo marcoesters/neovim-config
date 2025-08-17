@@ -28,7 +28,11 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 })
 
 local language_servers = {
+  "jsonls",
+  "lua_ls",
   "pyright",
+  "ts_ls",
+  "yamlls",
 }
 
 require("mason").setup()
