@@ -31,6 +31,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local language_servers = {
+  "bashls",
   "jsonls",
   "lua_ls",
   "pyright",
