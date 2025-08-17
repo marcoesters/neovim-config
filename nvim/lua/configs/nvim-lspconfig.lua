@@ -39,4 +39,9 @@ require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = language_servers,
   automatic_installation = true,
+  handlers = {
+    function(server)
+      require("lspconfig")[server].setup({})
+    end
+  }
 })
