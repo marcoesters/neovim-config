@@ -57,6 +57,16 @@ return {
     end,
   },
   {
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    ft = { "markdown" },
+    opts = {
+      sign = {
+        enabled = false,
+      }
+    }
+  },
+  {
     "hedyhli/markdown-toc.nvim",
     ft = { "markdown" },
     opts = {
@@ -72,4 +82,9 @@ return {
       require("mtoc").setup(opts)
     end,
   },
+  {
+    'SCJangra/table-nvim',
+    ft = { 'markdown' },
+    opts = {},
+  }
 }
