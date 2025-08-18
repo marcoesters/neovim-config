@@ -40,11 +40,6 @@ return {
     end,
   },
   {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-    ft = { "markdown" },
-  },
-  {
     "lewis6991/gitsigns.nvim",
     config = function()
       require("gitsigns").setup({
@@ -59,6 +54,22 @@ return {
     },
     config = function ()
       require("configs.lualine")
+    end,
+  },
+  {
+    "hedyhli/markdown-toc.nvim",
+    ft = { "markdown" },
+    opts = {
+      fences = {
+        start_text = "TOC",
+        end_text = "/TOC",
+      },
+      toc_list = {
+        markers = "-",
+      }
+    },
+    config = function(_, opts)
+      require("mtoc").setup(opts)
     end,
   },
 }
