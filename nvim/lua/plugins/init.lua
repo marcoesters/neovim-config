@@ -1,7 +1,6 @@
 return {
   "machakann/vim-sandwich",
   "tpope/vim-commentary",
-  "voldikss/vim-floaterm",
   {
     "nvim-tree/nvim-web-devicons",
     config = function()
@@ -86,5 +85,11 @@ return {
     'SCJangra/table-nvim',
     ft = { 'markdown' },
     opts = {},
+  },
+  {
+    'CRAG666/betterTerm.nvim',
+    config = function()
+      require("configs.betterTerm")
+    end
   }
 }
