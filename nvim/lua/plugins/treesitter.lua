@@ -45,6 +45,7 @@ return {
         "toml",
         "typescript",
         "vim",
+        "vimdoc",
         "xml",
         "yaml",
         "zsh",
