@@ -8,14 +8,6 @@ return {
     end,
   },
   {
-    "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-    build = ":TSUpdate",
-    opts = function()
-      return require "configs.treesitter"
-    end,
-  },
-  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "mason-org/mason-lspconfig.nvim",
