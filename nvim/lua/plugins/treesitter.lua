@@ -69,13 +69,13 @@ return {
 
       vim.filetype.add({
         pattern = {
-          [".condarc"] = "yaml",
+          ["%.condarc"] = "yaml",
         },
       })
 
       vim.filetype.add({
         pattern = {
-          ["*.nsi.tmpl"] = "nsis",
+          [".*/.*%.nsi%.tmpl"] = "nsis",
         },
       })
     end,
