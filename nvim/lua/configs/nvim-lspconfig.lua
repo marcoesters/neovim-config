@@ -36,6 +36,7 @@ local language_servers = {
   "jsonls",
   "lua_ls",
   "pyright",
+  "rust_analyzer",
   "ts_ls",
   "yamlls",
 }
