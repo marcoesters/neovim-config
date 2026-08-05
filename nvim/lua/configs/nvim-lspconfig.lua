@@ -32,6 +32,7 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local language_servers = {
   "bashls",
+  "gopls",
   "jsonls",
   "lua_ls",
   "pyright",
@@ -39,15 +40,28 @@ local language_servers = {
   "yamlls",
 }
 
+-- Default config for all LSP servers
+vim.lsp.config['*'] = {
+  capabilities = capabilities,
+}
+
+-- gopls-specific settings
+vim.lsp.config.gopls = {
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      gofumpt = true,
+    },
+  },
+}
+
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = language_servers,
   automatic_installation = true,
-  handlers = {
-    function(server_name)
-      require("lspconfig")[server_name].setup({
-        capabilities = capabilities,
-      })
-    end
-  }
 })
+
+vim.lsp.enable(language_servers)

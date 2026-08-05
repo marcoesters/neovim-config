@@ -79,5 +79,5 @@ return {
     config = function()
       require("configs.betterTerm")
     end
-  }
+  },
 }
